@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  phalcon4:
+    container_name: phalcon4
+    image: phalcon4
+    ports:
+      - 8080:80
+      - 80:80
+    volumes:
+      - C:\xampp\htdocs:/var/www/html/
+
+  mariadb:
+    image: mariadb:10.5.23
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: 123456
+    ports:
+      - 3306:3306
+    volumes:
+      - D:\mariadb:/var/lib/mysql:Z
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      - PMA_HOST=mariadb
+    depends_on:
+      - mariadb
+    ports:
+      - 8081:80
