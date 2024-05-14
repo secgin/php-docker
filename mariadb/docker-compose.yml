@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb:10.5.24
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=123456
+      - TZ=Europe\Istanbul
+    ports:
+      - 3306:3306
+    volumes:
+      - D:\mariadb:/var/lib/mysql:Z
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      - PMA_HOST=mariadb
+    depends_on:
+      - mariadb
+    ports:
+      - 8081:80

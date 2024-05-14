@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+
+  phalcon5:
+    container_name: phalcon5
+    image: phalcon5
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 8070:80
+    volumes:
+      - D:\www8:/var/www/html/
