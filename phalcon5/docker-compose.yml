@@ -11,3 +11,9 @@ services:
       - 8070:80
     volumes:
       - D:\www8:/var/www/html/
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    external: true

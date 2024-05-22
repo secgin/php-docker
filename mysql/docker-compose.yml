@@ -11,6 +11,8 @@ services:
       - 3307:3306
     volumes:
       - D:\mysql:/var/lib/mysql:Z
+    networks:
+      - my_network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -20,3 +22,9 @@ services:
       - mysql
     ports:
       - 8082:80
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    external: true
