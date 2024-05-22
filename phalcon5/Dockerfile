@@ -26,3 +26,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 RUN apt-get -y update
 RUN apt-get -y install git
 RUN apt-get -y install zip
+
+RUN docker-php-ext-install \
+    pdo_mysql
