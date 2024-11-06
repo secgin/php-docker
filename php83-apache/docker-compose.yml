@@ -1,12 +1,12 @@
 services:
 
-  phalcon5:
-    container_name: phalcon5
-    image: phalcon5
+  php:
+    container_name: php83-apache
+    image: php83-apache
     build:
       dockerfile: Dockerfile
     ports:
-      - 8075:80
+      - 8070:80
     volumes:
       - /Users/secgin/www:/var/www/html/
     networks:

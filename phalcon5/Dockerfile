@@ -1,6 +1,6 @@
-FROM php:8.2-apache-buster
+FROM php:8.3-apache
 
-ARG PHALCON_VERSION=5.6.0
+ARG PHALCON_VERSION=5.8.0
 
 RUN set -xe && \
         cd / && \
@@ -29,3 +29,6 @@ RUN apt-get -y install zip
 
 RUN docker-php-ext-install \
     pdo_mysql
+
+RUN a2enmod rewrite
+RUN service apache2 restart
