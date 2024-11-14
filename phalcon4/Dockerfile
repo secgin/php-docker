@@ -4,8 +4,10 @@ ARG PSR_VERSION=1.1.0
 ARG PHALCON_VERSION=4.1.2
 ARG PHALCON_EXT_PATH=php7/64bits
 
-RUN docker-php-ext-install pdo
-RUN docker-php-ext-install pdo_mysql
+RUN apt-get update && \
+    apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev libzip-dev zip unzip && \
+    docker-php-ext-configure gd --with-jpeg --with-freetype && \
+    docker-php-ext-install pdo pdo_mysql calendar gd zip
 
 RUN a2enmod rewrite
 RUN service apache2 restart
@@ -34,5 +36,4 @@ COPY docker-phalcon-* /usr/local/bin/
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
-RUN apt-get -y update
 RUN apt-get -y install git

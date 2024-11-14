@@ -1,5 +1,3 @@
-version: '3.1'
-
 services:
   phalcon4:
     container_name: phalcon4
@@ -7,10 +5,16 @@ services:
     build:
       dockerfile: Dockerfile
     ports:
-      - 8080:80
+      - 8000:80
       - 80:80
+      - 8800:8800
     volumes:
-      - /Users/secgin/ww7:/var/www/html/
+      - d:\www:/var/www/html/
+      - .\php.ini:/usr/local/etc/php/php.ini
+    environment:
+      - PMA_HOST=mariadb
+    networks:
+      - my_network
 
 networks:
   my_network:

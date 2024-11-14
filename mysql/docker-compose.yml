@@ -10,7 +10,7 @@ services:
     ports:
       - 3307:3306
     volumes:
-      - /Users/secgin/mysql:/var/lib/mysql:Z
+      - d:\mysql:/var/lib/mysql:Z
     networks:
       - my_network
 

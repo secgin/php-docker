@@ -1,7 +1,6 @@
-version: '3.1'
-
 services:
   mariadb:
+    container_name: mariadb
     image: mariadb:10.5.24
     restart: always
     environment:
@@ -10,10 +9,9 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - /Users/secgin/mariadb:/var/lib/mysql:Z
+      - d:\mariadb:/var/lib/mysql:Z
     networks:
       - my_network
-
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
